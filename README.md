@@ -5,7 +5,7 @@ This repository contains the source code examples for the book [Flask Web Develo
 
 The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
 
-This repo is revised by [Harry Wang](https://github.com/harrywang) for teaching Web Application Development
+This repo is revised by [Harry Wang](https://github.com/harrywang) for teaching Web Application Development.
 
 ## Setup Instructions:
 
@@ -33,7 +33,7 @@ Run the server
 
     $ python manage.py runserver
 
-Run the tests
+Run the tests (you need to install Chrome and chromedriver:`brew install chromedriver`)
 
     $ python manager.py test
 
