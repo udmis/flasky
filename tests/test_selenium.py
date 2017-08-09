@@ -3,6 +3,7 @@ import threading
 import time
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from app import create_app, db
 from app.models import Role, User, Post
 
@@ -12,11 +13,10 @@ class SeleniumTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # start Firefox
-        try:
-            cls.client = webdriver.Chrome(executable_path="chromedriver")
-        except:
-            pass
+
+        options = Options()
+        options.add_argument("--headless")
+        cls.client = webdriver.Chrome(chrome_options=options)
 
         # skip these tests if the browser could not be started
         if cls.client:
