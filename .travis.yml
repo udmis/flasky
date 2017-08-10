@@ -5,3 +5,10 @@ python:
 install: "pip install -r requirements/dev.txt"
 # command to run tests
 script: python manage.py test
+
+before_script:
+  # setup chrome driver
+  - wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -O chromedriver.zip
+  - unzip chromedriver.zip
+  - sudo mv chromedriver /usr/local/bin
+  - sudo chmod +x /usr/local/bin/chromedriver
