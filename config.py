@@ -19,7 +19,9 @@ class Config:
     FLASKY_POSTS_PER_PAGE = 20
     FLASKY_FOLLOWERS_PER_PAGE = 50
     FLASKY_COMMENTS_PER_PAGE = 30
-    FLASKY_SLOW_DB_QUERY_TIME=0.5
+    FLASKY_SLOW_DB_QUERY_TIME = 0.5
+    ROLLBAR_CLIENT_ACCESS_TOKEN = os.environ.get("ROLLBAR_CLIENT_ACCESS_TOKEN")
+    ROLLBAR_CLIENT_ENV = "development"
 
     @staticmethod
     def init_app(app):
@@ -40,6 +42,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
+    ROLLBAR_CLIENT_ENV = "production"
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 

@@ -3,6 +3,20 @@
 {% block title %}Flasky{% endblock %}
 
 {% block head %}
+
+{% if config['ROLLBAR_CLIENT_ACCESS_TOKEN'] %}
+<script type="text/javascript">
+var _rollbarConfig = {
+    accessToken: "{{ config['ROLLBAR_CLIENT_ACCESS_TOKEN'] }}",
+    captureUncaught: true,
+    payload: {
+        environment: "{{ config['ROLLBAR_CLIENT_ENV'] }}"
+    }
+};
+</script>
+<script src="{{ url_for('static', filename='rollbar.min.js') }}"></script>
+{% endif %}
+
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
